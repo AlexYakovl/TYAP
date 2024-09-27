@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\yakovlev_av\Desktop\ТЯП\lab0\lab0\main.cpp(10,36): warning C4101: size: неиспользованная локальная переменная
+  lab0.vcxproj -> C:\Users\yakovlev_av\Desktop\ТЯП\lab0\x64\Debug\lab0.exe

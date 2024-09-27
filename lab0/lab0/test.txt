@@ -1,0 +1,22 @@
+#include <iostream>
+#include <stdlib.h>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string text;
+
+    ifstream in("test.txt");
+
+    /*if (in.is_open())
+    {
+        while (getline(in, text))
+        {
+            std::cout << text << std::endl;
+        }
+    }*/
+
+    return 0;
+}
