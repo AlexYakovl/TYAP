@@ -33,10 +33,10 @@ int main(int agrc, char** argv) {
                     state = Dvoin;
                     out.put('\"');
                 }
-                else if (sym == '_' || (sym >= 'A' && sym <= '90') || (sym >= '97' && sym <= '122')) {
+                else if (sym == '_' || (sym >= 'A' && sym <= 'Z') || (sym >= 'a' && sym <= 'z')) {
                     state = Blocked;
                 }
-                else if (sym >= '48' && sym <= '57') {
+                else if (sym >= '0' && sym <= '9') {
                     state = Number;
                     out.put(sym);
                 }
@@ -128,10 +128,27 @@ int main(int agrc, char** argv) {
 
 
             case Blocked:
-                
+                if (sym == '/') {
+                    state = Slash;
+                }
+                else if (sym == '\'') {
+                    state = Odin;
+                }
+                else if (sym == '\"') {
+                    state = Dvoin;
+                }
+                else if (sym == '_' || (sym >= 'A' && sym <= 'Z') || (sym >= 'a' && sym <= 'z')) {
+                    state = Blocked;
+                }
+                else {
+                    state = Normal;
+                }
                 break;
-            case Startdot:
-                
+            case StartDot:
+                if (sym >= '0' && sym <= '9') {
+                    state = Decimal;
+                    out.put(sym);
+                }
                 break;
             case Decimal:
                 
