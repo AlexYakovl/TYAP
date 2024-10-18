@@ -7,7 +7,8 @@
 using namespace std;
 
 
-typedef enum states { Normal, Slash, Comment, Done, Slashslash, Odin, Dvoin, SlashOdin, SlashDvoin } states;
+typedef enum states { Normal, Slash, Comment, Done, Slashslash, Odin, Dvoin, SlashOdin, SlashDvoin, 
+                        Float, LongDouble, E, BeforeE, Sign, Number, Decimal, StartDot, Blocked } states;
 
 int main(int agrc, char** argv) {
 
@@ -31,6 +32,17 @@ int main(int agrc, char** argv) {
                 else if (sym == '\"') {
                     state = Dvoin;
                     out.put('\"');
+                }
+                else if (sym == '_' || (sym >= 'A' && sym <= '90') || (sym >= '97' && sym <= '122')) {
+                    state = Blocked;
+                }
+                else if (sym >= '48' && sym <= '57') {
+                    state = Number;
+                    out.put(sym);
+                }
+                else if (sym == '.') {
+                    state = StartDot;
+                    out.put(sym);
                 }
                 else {
                     out.put(sym);
@@ -112,6 +124,35 @@ int main(int agrc, char** argv) {
             case SlashDvoin:
                 out.put(sym);
                 state = Dvoin;
+                break;
+
+
+            case Blocked:
+                
+                break;
+            case Startdot:
+                
+                break;
+            case Decimal:
+                
+                break;
+            case Number:
+                
+                break;
+            case Sign:
+                
+                break;
+            case BeforeE:
+                
+                break;
+            case E:
+                
+                break;
+            case LongDouble:
+                
+                break;
+            case Float:
+                
                 break;
             }
         }
